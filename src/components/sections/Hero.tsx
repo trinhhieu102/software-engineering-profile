@@ -80,21 +80,31 @@ export default function Hero() {
               </Link>
             </div>
 
-            {/* Quick Stats Grid with Animated Counters & Text Scramble */}
+            {/* Quick Stats Grid with Sleek Glassmorphism Cards & Hover Neon Glow */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-zinc-800/80">
               {PORTFOLIO_DATA.personal.stats.map((stat, idx) => {
                 const isNumeric = /^[\d.]+/.test(stat.value);
 
                 return (
-                  <div key={idx} className="space-y-1">
-                    <p className="text-2xl sm:text-3xl font-bold font-mono text-white">
+                  <div
+                    key={idx}
+                    className="group/stat relative p-4 rounded-2xl bg-zinc-950/20 border border-zinc-900/50 hover:border-emerald-500/30 transition-all duration-500 hover:shadow-[0_0_25px_rgba(16,185,129,0.06)] overflow-hidden flex flex-col justify-between"
+                  >
+                    {/* Ambient Glow Background on Hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover/stat:opacity-100 bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent transition-opacity duration-500 pointer-events-none" />
+                    
+                    {/* Subtle Top Border Highlight */}
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent group-hover/stat:via-emerald-500/20 transition-all duration-500" />
+
+                    <p className="text-2xl sm:text-3xl font-bold font-mono text-white group-hover/stat:text-emerald-400 transition-all duration-300 group-hover/stat:drop-shadow-[0_0_8px_rgba(52,211,153,0.3)]">
                       {isNumeric ? (
                         <AnimatedCounter value={stat.value} duration={1600 + idx * 200} />
                       ) : (
                         <TextScramble text={stat.value} duration={900} />
                       )}
                     </p>
-                    <p className="text-[11px] text-zinc-400 uppercase tracking-wider font-mono">
+                    
+                    <p className="text-[10px] text-zinc-500 group-hover/stat:text-zinc-400 uppercase tracking-wider font-mono mt-1 transition-colors duration-300">
                       {stat.label}
                     </p>
                   </div>
