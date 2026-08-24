@@ -381,6 +381,7 @@ function CoderWorkspace({ isZoomed, zoomVal }: { isZoomed: boolean; zoomVal: Rea
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
+            args={[positions, 3]}
             count={positions.length / 3}
             array={positions}
             itemSize={3}
@@ -572,8 +573,10 @@ function SceneManager({
     }
 
     // Zoom-in field of view transition (warp effect)
-    state.camera.fov = THREE.MathUtils.lerp(45, 36, zoomVal.current);
-    state.camera.updateProjectionMatrix();
+    if (state.camera instanceof THREE.PerspectiveCamera) {
+      state.camera.fov = THREE.MathUtils.lerp(45, 36, zoomVal.current);
+      state.camera.updateProjectionMatrix();
+    }
 
     // Starfield rotation speed increases during zoom warp
     if (starsRef.current) {
