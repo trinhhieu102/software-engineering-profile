@@ -5,16 +5,18 @@
 ![Next.js 16](https://img.shields.io/badge/Next.js%2016-black?style=for-the-badge&logo=next.js&logoColor=white)
 ![React 19](https://img.shields.io/badge/React%2019-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![TypeScript](https://img.shields.io/badge/TypeScript%205-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Docker Compose](https://img.shields.io/badge/Docker_Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Three.js](https://img.shields.io/badge/Three.js%20WebGL-black?style=for-the-badge&logo=three.js&logoColor=white)
 ![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS_v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Lighthouse 100/100](https://img.shields.io/badge/Lighthouse-100%2F100-success?style=for-the-badge&logo=lighthouse&logoColor=white)
 ![English B2](https://img.shields.io/badge/English-CEFR%20B2-emerald?style=for-the-badge&logo=google-translate&logoColor=white)
 
 <p align="center">
-  <b>A state-of-the-art, high-performance Software Engineering portfolio built with Next.js 16 (App Router), React 19, TypeScript, Three.js WebGL, and Tailwind CSS v4.</b>
+  <b>A state-of-the-art, high-performance Software Engineering portfolio built with Next.js 16 (App Router), React 19, TypeScript, Three.js WebGL, Docker, and Tailwind CSS v4.</b>
 </p>
 
-[🌐 Live Demo](https://trinhhieu.vercel.app) • [📑 Architecture Plan](#-system-architecture) • [⚡ Lighthouse Score](#-lighthouse-audit-results) • [📫 Contact](#-contact--connect)
+[🌐 Live Demo](https://trinhhieu.vercel.app) • [📑 Architecture Plan](#-system-architecture) • [⚡ Lighthouse Score](#-lighthouse-audit-results) • [🐳 Docker Setup](#-docker--containerization) • [📫 Contact](#-contact--connect)
 
 </div>
 
@@ -82,7 +84,8 @@ Verified directly via Chrome DevTools MCP with **100/100 across ALL categories**
 
 | Layer | Technologies & Tools |
 | :--- | :--- |
-| **Framework & Runtime** | Next.js 16 (App Router, Turbopack), React 19, TypeScript 5, Node.js |
+| **Framework & Runtime** | Next.js 16 (App Router, Turbopack, Standalone), React 19, TypeScript 5, Node.js 20 |
+| **DevOps & Containerization**| Docker, Docker Compose, Multi-Stage Builds, Alpine Linux, GitHub Actions CI/CD |
 | **Styling & Design System** | Tailwind CSS v4, Vanilla CSS Custom Properties, Glassmorphism, Linear Dark Theme |
 | **3D Graphics & Shaders** | Three.js, `@react-three/fiber`, `@react-three/drei`, WebGL 2.0 |
 | **Animation & Motion** | GSAP 3, `@gsap/react`, Hardware-accelerated CSS Transforms, Canvas Confetti |
@@ -91,10 +94,55 @@ Verified directly via Chrome DevTools MCP with **100/100 across ALL categories**
 
 ---
 
+## 🐳 Docker & Containerization
+
+The repository includes an **Enterprise Multi-Stage Dockerfile** (`node:20-alpine`) that produces an ultra-compact standalone image (< 130MB) and a production-ready **Docker Compose** service with integrated healthchecks.
+
+### Quick Start with Docker Compose
+
+Run the entire application in a production container with a single command:
+
+```bash
+# 1. Clone the repository
+git clone git@github.com:trinhhieu102/software-engineering-profile.git
+cd software-engineering-profile
+
+# 2. Build and launch container in background
+docker compose up -d --build
+```
+
+Access the application at [http://localhost:3000](http://localhost:3000).
+
+```bash
+# Check container status and healthcheck
+docker compose ps
+
+# View live application logs
+docker compose logs -f
+
+# Stop and remove containers
+docker compose down
+```
+
+### Standalone Docker Image Build
+
+```bash
+# Build standalone Docker image
+docker build -t trinhhieu-portfolio:latest .
+
+# Run container with non-root security compliance
+docker run -p 3000:3000 --name trinhhieu-portfolio trinhhieu-portfolio:latest
+```
+
+---
+
 ## 📁 System Architecture & Directory Structure
 
 ```
 profile/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml           # Enterprise Parallel CI/CD Pipeline
 ├── public/
 │   ├── avatar.png               # Coding cat brand avatar
 │   └── favicon.ico              # Multi-resolution favicon
@@ -136,14 +184,19 @@ profile/
 │   │   └── index.ts             # Central typed data store
 │   └── lib/
 │       └── utils.ts             # Tailwind class merging utilities
+├── .dockerignore
+├── docker-compose.yml           # Production Docker Compose orchestration
+├── Dockerfile                   # Multi-stage standalone Alpine container
+├── next.config.ts               # Standalone output & package optimizations
 ├── package.json
 ├── tsconfig.json
+├── vercel.json                  # Vercel security headers & caching
 └── README.md
 ```
 
 ---
 
-## 🚦 Getting Started & Local Development
+## 🚦 Getting Started & Local Development (Node.js)
 
 ### Prerequisites
 - Node.js `v18.17.0+` (Recommended: `v20+` or `v24+`)
