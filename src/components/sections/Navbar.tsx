@@ -44,7 +44,11 @@ export default function Navbar() {
             />
           </div>
           <span>
-            {PORTFOLIO_DATA.personal.name} <span className="text-zinc-500 font-normal">/ se</span>
+            {PORTFOLIO_DATA.personal.name}{" "}
+            <span className="text-zinc-500 font-normal transition-all duration-300 group-hover:text-emerald-500">/</span>{" "}
+            <span className="text-zinc-500 font-normal transition-all duration-500 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-400 group-hover:to-sky-400 group-hover:bg-clip-text">
+              software engineering
+            </span>
           </span>
         </Link>
 
