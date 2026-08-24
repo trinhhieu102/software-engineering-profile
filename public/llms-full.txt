@@ -1,0 +1,17 @@
+# Trịnh Văn Hiếu — Full Technical Dossier
+
+> Complete technical portfolio information and engineering specifications for Trịnh Văn Hiếu.
+
+## Identity & Contact
+- Name: Trịnh Văn Hiếu (Hieu Trinh)
+- Year of Birth: 2006
+- English Level: CEFR B2
+- Email: hieu.trinh.dev@gmail.com
+- GitHub: https://github.com/trinhhieu102
+- Portfolio: https://trinhhieu.vercel.app
+
+## Full-Stack & Systems Engineering Skills
+- Languages: TypeScript, JavaScript, Go, Python, SQL, HTML5, CSS3
+- Frontend: Next.js 16 (App Router), React 19, Tailwind CSS v4, Three.js, WebGL, GSAP
+- Backend: Go (Golang), Node.js, Express, PostgreSQL, Redis, Apache Kafka, Docker
+- DevOps: Docker Compose, Multi-Stage Builds, GitHub Actions CI/CD, Linux, Vercel

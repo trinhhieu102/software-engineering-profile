@@ -1,27 +1,20 @@
 # Trịnh Văn Hiếu — Software Engineer Portfolio
-> High-performance Software Engineering portfolio of Trịnh Văn Hiếu (born 2006, English B2 CEFR Certified).
 
-## Profile Summary
-- Name: Trịnh Văn Hiếu
-- Role: Software Engineer / Full Stack & Distributed Systems
-- Birth Year: 2006
-- English Level: B2 (CEFR Certified)
-- Location: Ho Chi Minh City, Vietnam
-- Website: https://trinhhieu.vercel.app
-- GitHub: https://github.com/trinhhieu102
+> Portfolio of Trịnh Văn Hiếu (born 2006, English B2 CEFR) specializing in high-performance full-stack web applications, distributed systems, Next.js, Go, and 3D WebGL.
 
-## Technical Proficiencies
-- Languages: TypeScript, JavaScript, Go (Golang), Python, SQL
-- Frontend: Next.js 16 (App Router, Turbopack), React 19, Tailwind CSS v4, Three.js WebGL, GSAP
-- Backend: Go, Node.js, Express, FastAPI, PostgreSQL, Redis, Apache Kafka, REST, GraphQL
-- DevOps: Docker, Docker Compose, Multi-Stage Builds, GitHub Actions CI/CD, Linux, Vercel
+## Main Navigation
 
-## System Architecture Highlights
-- 3D WebGL Outer Space Celestial Orbit with procedural textures, atmospheric Rayleigh scattering, and orbiting satellites.
-- 100/100 Google Lighthouse Scores across Performance, Accessibility, Best Practices, SEO, and Agentic Browsing.
-- Interactive developer shell console emulator with command history and auto-completion.
+- [Home](https://trinhhieu.vercel.app/): Interactive 3D portfolio of Trịnh Văn Hiếu
+- [About](https://trinhhieu.vercel.app/#about): Background, experience, education, and engineering mindset
+- [Skills](https://trinhhieu.vercel.app/#skills): Core technical skills including Next.js, React, TypeScript, Go, Python, Docker, PostgreSQL
+- [Projects](https://trinhhieu.vercel.app/#projects): Production applications, distributed backend services, and 3D graphics
+- [Experience](https://trinhhieu.vercel.app/#experience): Career history and professional contributions
+- [Terminal](https://trinhhieu.vercel.app/#terminal): Interactive developer shell console emulator
+- [Contact](https://trinhhieu.vercel.app/#contact): Connect and get in touch with Trịnh Văn Hiếu
 
-## Contact Information
-- Email: hieu.trinh.dev@gmail.com
-- GitHub: https://github.com/trinhhieu102
-- LinkedIn: https://linkedin.com/in/trinhhieu-dev
+## Optional Links
+
+- [GitHub Profile](https://github.com/trinhhieu102): Open source repositories and contributions
+- [Source Code](https://github.com/trinhhieu102/software-engineering-profile): Source code of this portfolio
+- [Sitemap](https://trinhhieu.vercel.app/sitemap.xml): XML sitemap for search engines and crawlers
+- [Full LLM Context](https://trinhhieu.vercel.app/llms-full.txt): Comprehensive plain-text developer dossier
