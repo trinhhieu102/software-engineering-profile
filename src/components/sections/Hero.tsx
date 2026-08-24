@@ -11,8 +11,11 @@ import TextScramble from "../ui/TextScramble";
 const HeroScene = dynamic(() => import("../canvas/HeroScene"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-[420px] md:h-[540px] flex items-center justify-center">
-      <div className="w-8 h-8 border-2 border-zinc-800 border-t-zinc-400 rounded-full animate-spin" />
+    <div className="w-full h-[380px] sm:h-[440px] md:h-[500px] flex items-center justify-center relative overflow-hidden">
+      <div className="relative w-48 h-48 sm:w-60 sm:h-60 rounded-full flex items-center justify-center">
+        <div className="w-44 h-44 sm:w-56 sm:h-56 rounded-full bg-gradient-to-tr from-sky-950 via-blue-900/40 to-emerald-950 border border-sky-500/30 shadow-[0_0_50px_rgba(56,189,248,0.2)] animate-pulse" />
+        <div className="absolute inset-0 rounded-full border border-sky-400/20 border-t-sky-400/80 animate-spin" />
+      </div>
     </div>
   ),
 });

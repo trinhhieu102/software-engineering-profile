@@ -189,7 +189,7 @@ export default function HeroScene() {
   }, []);
 
   return (
-    <div className="w-full h-full min-h-[340px] sm:min-h-[400px] md:min-h-[480px] flex items-center justify-center relative">
+    <div className="w-full h-[380px] sm:h-[440px] md:h-[500px] flex items-center justify-center relative overflow-hidden">
       {mounted ? (
         <Canvas
           camera={{ position: [0, 0, 4.6], fov: 45 }}
