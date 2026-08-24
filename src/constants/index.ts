@@ -39,7 +39,7 @@ export const PORTFOLIO_DATA = {
     bio: "Passionate and fast-learning Software Engineer (born in 2006) with strong foundations in Computer Science, full-stack web development, and cloud-native systems. Certified English B2 (CEFR) with high adaptability, clean coding mindset, and enthusiasm for engineering impactful software.",
     location: "Vietnam / Open to Global Remote",
     status: "Available for Software Engineering Roles & Internships",
-    email: "trinhvanhieu.dev@gmail.com",
+    email: "hieutrinh11111@gmail.com",
     phone: "+84 987 654 321",
     github: "https://github.com",
     linkedin: "https://linkedin.com",
