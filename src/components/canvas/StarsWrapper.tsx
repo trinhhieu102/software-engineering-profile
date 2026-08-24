@@ -13,16 +13,19 @@ export default function StarsWrapper() {
   useEffect(() => {
     // Defer starfield canvas initialization until after initial FCP/LCP paint
     if ("requestIdleCallback" in window) {
-      const handle = (window as Window & { requestIdleCallback: (cb: () => void) => number }).requestIdleCallback(() => {
-        setMounted(true);
-      });
+      const handle = (window as Window & { requestIdleCallback: (cb: () => void, opts?: { timeout: number }) => number }).requestIdleCallback(
+        () => {
+          setMounted(true);
+        },
+        { timeout: 2000 }
+      );
       return () => {
         if ("cancelIdleCallback" in window) {
           (window as Window & { cancelIdleCallback: (h: number) => void }).cancelIdleCallback(handle);
         }
       };
     } else {
-      const timer = setTimeout(() => setMounted(true), 120);
+      const timer = setTimeout(() => setMounted(true), 250);
       return () => clearTimeout(timer);
     }
   }, []);

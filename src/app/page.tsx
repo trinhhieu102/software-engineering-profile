@@ -26,12 +26,24 @@ export default function Home() {
         {/* Infinite Tech Skills Marquee Banner */}
         <TechMarquee />
 
-        <AboutBento />
-        <Skills />
-        <Projects />
-        <Experience />
-        <TerminalSection />
-        <Contact />
+        <div className="section-lazy">
+          <AboutBento />
+        </div>
+        <div className="section-lazy">
+          <Skills />
+        </div>
+        <div className="section-lazy">
+          <Projects />
+        </div>
+        <div className="section-lazy">
+          <Experience />
+        </div>
+        <div className="section-lazy">
+          <TerminalSection />
+        </div>
+        <div className="section-lazy">
+          <Contact />
+        </div>
       </main>
 
       {/* Footer Landmark */}

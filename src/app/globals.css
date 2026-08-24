@@ -39,6 +39,12 @@
   }
 }
 
+/* Below-the-fold optimization for mobile rendering */
+.section-lazy {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 600px;
+}
+
 /* Linear / Vercel Minimalist Card Styles */
 .linear-card {
   background: rgba(14, 14, 17, 0.65);
@@ -98,6 +104,8 @@
 }
 
 .animate-marquee {
+  will-change: transform;
+  transform: translateZ(0);
   animation: marquee 30s linear infinite;
 }
 
