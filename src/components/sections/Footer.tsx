@@ -78,10 +78,6 @@ export default function Footer() {
           </div>
 
           <div className="space-y-2.5 text-center md:text-left z-10">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/20 border border-emerald-500/25 text-[11px] font-mono text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.05)]">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Career Opportunities</span>
-            </div>
             <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-100 to-zinc-400 leading-tight">
               Ready to engineer high-impact software systems?
             </h3>

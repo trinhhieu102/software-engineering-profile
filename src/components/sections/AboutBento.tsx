@@ -96,9 +96,6 @@ export default function AboutBento() {
         {/* Card 3: Performance & Uptime Metric */}
         <BentoCard className="flex flex-col justify-between">
           <div>
-            <div className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-300 mb-4">
-              <Zap className="w-4 h-4" />
-            </div>
             <h3 className="text-base font-bold text-white mb-2">System Standards</h3>
             <p className="text-xs text-zinc-400 leading-relaxed">
               Every deployment meets strict observability, low latency, and zero single points of failure.
