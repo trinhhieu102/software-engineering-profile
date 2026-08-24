@@ -19,8 +19,8 @@ export default function Home() {
       {/* Navigation Header */}
       <Navbar />
 
-      {/* Main Content Sections */}
-      <main className="relative z-10 space-y-12 md:space-y-20">
+      {/* Main Semantic Landmark */}
+      <main id="main-content" role="main" className="relative z-10 space-y-12 md:space-y-20">
         <Hero />
         
         {/* Infinite Tech Skills Marquee Banner */}
@@ -34,7 +34,7 @@ export default function Home() {
         <Contact />
       </main>
 
-      {/* Footer */}
+      {/* Footer Landmark */}
       <Footer />
     </div>
   );

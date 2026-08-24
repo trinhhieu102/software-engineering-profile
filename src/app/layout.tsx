@@ -5,17 +5,20 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const viewport: Viewport = {
   themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
+  maximumScale: 5,
 };
 
 export const metadata: Metadata = {
@@ -35,6 +38,17 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Trịnh Văn Hiếu" }],
   creator: "Trịnh Văn Hiếu",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
+  },
+  alternates: {
+    canonical: "https://trinhhieu.vercel.app",
+    types: {
+      "text/plain": "/llms.txt",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -54,6 +68,10 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
@@ -89,10 +107,11 @@ export default function RootLayout({
 
   return (
     <html
-      lang="en"
+      lang="vi"
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}
     >
       <head>
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Content" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
