@@ -16,6 +16,7 @@ env:
   NEXT_TELEMETRY_DISABLED: 1
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID || 'team_Sw43XbMiZFVq3WsZdPOFWQ6E' }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID || 'prj_KoID1hpLo5ncKQhDghKICNp3yQJo' }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
 jobs:
   # ---------------------------------------------------------------------------
@@ -80,7 +81,6 @@ jobs:
   # ---------------------------------------------------------------------------
   build:
     name: 🏗️ Next.js Production Build
-    needs: [type-check, lint-and-format, security-audit]
     runs-on: ubuntu-latest
     timeout-minutes: 8
 
@@ -114,7 +114,7 @@ jobs:
   # ---------------------------------------------------------------------------
   deploy:
     name: 🚀 Deploy to Vercel Production
-    needs: build
+    needs: [build, type-check, lint-and-format, security-audit]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     timeout-minutes: 8
