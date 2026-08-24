@@ -572,7 +572,7 @@ function SceneManager({
       state.camera.quaternion.slerp(targetQuaternion, delta * 4.0);
     }
 
-    // Zoom-in field of view transition (warp effect)
+    // Zoom-in field of view transition (warp effect) - type-safe check added
     if (state.camera instanceof THREE.PerspectiveCamera) {
       state.camera.fov = THREE.MathUtils.lerp(45, 36, zoomVal.current);
       state.camera.updateProjectionMatrix();
