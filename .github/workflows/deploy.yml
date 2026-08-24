@@ -1,0 +1,68 @@
+name: CI/CD Pipeline & Vercel Deployment
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  validate-and-build:
+    name: 🧪 Quality Assurance & TypeCheck
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm ci
+
+      - name: 🔍 TypeScript Static Type Checking
+        run: npx tsc --noEmit
+
+      - name: 🏗️ Production Build Verification
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+
+  deploy-to-vercel:
+    name: 🚀 Deploy to Vercel Production
+    needs: validate-and-build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 📦 Install Vercel CLI
+        run: npm install -g vercel@latest
+
+      - name: 📂 Pull Vercel Environment Information
+        if: env.VERCEL_TOKEN != ''
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID || 'team_Sw43XbMiZFVq3WsZdPOFWQ6E' }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID || 'prj_KoID1hpLo5ncKQhDghKICNp3yQJo' }}
+
+      - name: 🚀 Build & Deploy to Vercel Production
+        if: env.VERCEL_TOKEN != ''
+        run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID || 'team_Sw43XbMiZFVq3WsZdPOFWQ6E' }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID || 'prj_KoID1hpLo5ncKQhDghKICNp3yQJo' }}
