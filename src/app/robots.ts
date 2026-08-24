@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://trinhvanhieu.dev/sitemap.xml",
+    sitemap: "https://trinhhieu.vercel.app/sitemap.xml",
   };
 }

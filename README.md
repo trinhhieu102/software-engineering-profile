@@ -14,7 +14,7 @@
   <b>A state-of-the-art, high-performance Software Engineering portfolio built with Next.js 16 (App Router), React 19, TypeScript, Three.js WebGL, and Tailwind CSS v4.</b>
 </p>
 
-[🌐 Live Demo](https://trinhvanhieu.dev) • [📑 Architecture Plan](#-system-architecture) • [⚡ Lighthouse Score](#-lighthouse-audit-results) • [📫 Contact](#-contact--connect)
+[🌐 Live Demo](https://trinhhieu.vercel.app) • [📑 Architecture Plan](#-system-architecture) • [⚡ Lighthouse Score](#-lighthouse-audit-results) • [📫 Contact](#-contact--connect)
 
 </div>
 

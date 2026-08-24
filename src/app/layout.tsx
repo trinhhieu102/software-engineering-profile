@@ -19,6 +19,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://trinhhieu.vercel.app"),
   title: "Trịnh Văn Hiếu | Software Engineer Portfolio",
   description:
     "Portfolio of Trịnh Văn Hiếu (born 2006, English B2) - Software Engineer specializing in scalable full-stack web applications, distributed systems, Next.js, Go, and 3D WebGL.",
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://trinhvanhieu.dev",
+    url: "https://trinhhieu.vercel.app",
     title: "Trịnh Văn Hiếu | Software Engineer Portfolio",
     description:
       "Explore production systems, 3D interactive projects, and backend architectures built by Trịnh Văn Hiếu (Software Engineer, English B2).",
@@ -69,11 +70,10 @@ export default function RootLayout({
     birthDate: "2006",
     jobTitle: "Software Engineer",
     knowsLanguage: ["Vietnamese", "English (B2)"],
-    url: "https://trinhvanhieu.dev",
+    url: "https://trinhhieu.vercel.app",
     sameAs: [
-      "https://github.com",
+      "https://github.com/trinhhieu102",
       "https://linkedin.com",
-      "https://twitter.com",
     ],
     knowsAbout: [
       "Software Engineering",
