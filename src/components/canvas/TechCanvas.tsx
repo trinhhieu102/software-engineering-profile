@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, Suspense } from "react";
+import { useRef, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, Edges } from "@react-three/drei";
 import * as THREE from "three";
@@ -162,25 +162,47 @@ function CloudContainer() {
 }
 
 export default function TechCanvas({ shape = "backend" }: { shape?: TechShapeType }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { rootMargin: "150px" }
+    );
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="w-full h-28 flex items-center justify-center">
-      <Canvas
-        camera={{ position: [0, 0, 3.6], fov: 45 }}
-        dpr={[1, 1.5]}
-        gl={{ powerPreference: "low-power", antialias: true }}
-      >
-        <ambientLight intensity={1.5} />
-        <directionalLight position={[5, 8, 5]} intensity={3.5} color="#ffffff" />
-        <directionalLight position={[-5, -5, -3]} intensity={2} color="#ffffff" />
-        <pointLight position={[0, 2, 2]} intensity={2} color="#ffffff" />
-        
-        <Suspense fallback={null}>
-          {shape === "backend" && <BackendKnot />}
-          {shape === "frontend" && <FrontendDodecahedron />}
-          {shape === "database" && <DatabaseDisks />}
-          {shape === "cloud" && <CloudContainer />}
-        </Suspense>
-      </Canvas>
+    <div ref={containerRef} className="w-full h-28 flex items-center justify-center">
+      {isInView ? (
+        <Canvas
+          camera={{ position: [0, 0, 3.6], fov: 45 }}
+          dpr={[1, 1.5]}
+          gl={{ powerPreference: "low-power", antialias: false }}
+        >
+          <ambientLight intensity={1.5} />
+          <directionalLight position={[5, 8, 5]} intensity={3.5} color="#ffffff" />
+          <directionalLight position={[-5, -5, -3]} intensity={2} color="#ffffff" />
+          <pointLight position={[0, 2, 2]} intensity={2} color="#ffffff" />
+          
+          <Suspense fallback={null}>
+            {shape === "backend" && <BackendKnot />}
+            {shape === "frontend" && <FrontendDodecahedron />}
+            {shape === "database" && <DatabaseDisks />}
+            {shape === "cloud" && <CloudContainer />}
+          </Suspense>
+        </Canvas>
+      ) : (
+        <div className="w-8 h-8 rounded-full border border-zinc-800 animate-pulse opacity-40" />
+      )}
     </div>
   );
 }

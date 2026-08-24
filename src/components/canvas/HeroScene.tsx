@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo, Suspense } from "react";
+import { useRef, useMemo, useState, useEffect, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Float } from "@react-three/drei";
 import * as THREE from "three";
@@ -182,36 +182,47 @@ function RealisticEarth() {
 }
 
 export default function HeroScene() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 60);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="w-full h-full min-h-[380px] md:min-h-[480px] flex items-center justify-center">
-      <Canvas
-        camera={{ position: [0, 0, 4.6], fov: 45 }}
-        dpr={[1, 2]}
-        gl={{ powerPreference: "high-performance", antialias: true }}
-      >
-        {/* Realistic Space Solar Lighting */}
-        <ambientLight intensity={0.25} />
-        {/* Direct Sun light casting day/night terminator */}
-        <directionalLight position={[10, 6, 8]} intensity={4.2} color="#ffffff" />
-        {/* Subtle deep space reflection */}
-        <directionalLight position={[-8, -5, -6]} intensity={0.4} color="#1e293b" />
-        {/* Atmospheric rim backlight */}
-        <pointLight position={[-5, 3, -4]} intensity={1.5} color="#38bdf8" />
+      {mounted ? (
+        <Canvas
+          camera={{ position: [0, 0, 4.6], fov: 45 }}
+          dpr={[1, 1.5]}
+          gl={{ powerPreference: "low-power", antialias: true }}
+        >
+          {/* Realistic Space Solar Lighting */}
+          <ambientLight intensity={0.25} />
+          {/* Direct Sun light casting day/night terminator */}
+          <directionalLight position={[10, 6, 8]} intensity={4.2} color="#ffffff" />
+          {/* Subtle deep space reflection */}
+          <directionalLight position={[-8, -5, -6]} intensity={0.4} color="#1e293b" />
+          {/* Atmospheric rim backlight */}
+          <pointLight position={[-5, 3, -4]} intensity={1.5} color="#38bdf8" />
 
-        <Suspense fallback={<CanvasLoader />}>
-          <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.3}>
-            <RealisticEarth />
-          </Float>
-        </Suspense>
+          <Suspense fallback={<CanvasLoader />}>
+            <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.3}>
+              <RealisticEarth />
+            </Float>
+          </Suspense>
 
-        <OrbitControls
-          enableZoom={false}
-          enablePan={false}
-          autoRotate={false}
-          maxPolarAngle={Math.PI / 1.6}
-          minPolarAngle={Math.PI / 2.8}
-        />
-      </Canvas>
+          <OrbitControls
+            enableZoom={false}
+            enablePan={false}
+            autoRotate={false}
+            maxPolarAngle={Math.PI / 1.6}
+            minPolarAngle={Math.PI / 2.8}
+          />
+        </Canvas>
+      ) : (
+        <div className="w-8 h-8 rounded-full border-2 border-zinc-800 border-t-zinc-400 animate-spin" />
+      )}
     </div>
   );
 }
