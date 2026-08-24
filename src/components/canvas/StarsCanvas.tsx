@@ -234,7 +234,7 @@ export default function StarsCanvas() {
     <div className="w-full h-auto absolute inset-0 z-0 pointer-events-none opacity-90">
       <Canvas
         camera={{ position: [0, 0, 2] }}
-        dpr={[1, 1.5]}
+        dpr={[1, 1.2]}
         gl={{ powerPreference: "low-power", antialias: false }}
       >
         <Suspense fallback={null}>

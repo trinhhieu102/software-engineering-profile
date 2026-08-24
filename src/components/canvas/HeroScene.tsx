@@ -194,11 +194,11 @@ export default function HeroScene() {
       {mounted ? (
         <Canvas
           camera={{ position: [0, 0, 4.6], fov: 45 }}
-          dpr={[1, 1.5]}
-          gl={{ powerPreference: "low-power", antialias: true }}
+          dpr={[1, 1.2]}
+          gl={{ powerPreference: "low-power", antialias: false }}
         >
           {/* Realistic Space Solar Lighting */}
-          <ambientLight intensity={0.25} />
+          <ambientLight intensity={0.3} />
           {/* Direct Sun light casting day/night terminator */}
           <directionalLight position={[10, 6, 8]} intensity={4.2} color="#ffffff" />
           {/* Subtle deep space reflection */}
@@ -206,7 +206,7 @@ export default function HeroScene() {
           {/* Atmospheric rim backlight */}
           <pointLight position={[-5, 3, -4]} intensity={1.5} color="#38bdf8" />
 
-          <Suspense fallback={<CanvasLoader />}>
+          <Suspense fallback={null}>
             <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.3}>
               <RealisticEarth />
             </Float>
