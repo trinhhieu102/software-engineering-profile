@@ -164,7 +164,7 @@ export const PORTFOLIO_DATA = {
       subtitle: "Interactive 3D Spatial Canvas & Model Viewer",
       description: "A high-performance WebGL 3D showcase featuring custom shaders, physics-based camera transitions, and Draco-compressed geometric assets.",
       tags: ["React Three Fiber", "Three.js", "GLSL Shaders", "GSAP", "TypeScript"],
-      metrics: "🎮 Constant 60 FPS on mobile • Low memory footprint",
+      metrics: "🎮 Constant 120 FPS performance • Low memory footprint",
       architecture: [
         "Optimized WebGL buffer geometry disposal pipeline",
         "Custom GLSL lighting shaders with soft shadows",

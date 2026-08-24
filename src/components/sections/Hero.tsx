@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { PORTFOLIO_DATA } from "@/constants";
@@ -21,6 +22,7 @@ const HeroScene = dynamic(() => import("../canvas/HeroScene"), {
 });
 
 export default function Hero() {
+  const [isZoomed, setIsZoomed] = useState(false);
   return (
     <section
       id="home"
@@ -103,23 +105,35 @@ export default function Hero() {
 
           {/* Right Column: 3D Earth Orbit Structure */}
           <div className="lg:col-span-5 relative flex items-center justify-center">
-            <div className="w-full relative rounded-2xl linear-card p-2 border border-zinc-800">
+            <div
+              className={`w-full relative rounded-2xl linear-card p-2 border transition-all duration-700 ${
+                isZoomed ? "border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.15)]" : "border-zinc-800"
+              }`}
+              onMouseEnter={() => setIsZoomed(true)}
+              onMouseLeave={() => setIsZoomed(false)}
+            >
               {/* Interactive badge */}
               <div className="absolute top-4 left-4 z-20 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-950/80 border border-zinc-800 text-[11px] font-mono text-zinc-400 backdrop-blur-md">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>3D Earth Orbit • Drag to Rotate</span>
+                <span className={`w-1.5 h-1.5 rounded-full ${isZoomed ? 'bg-emerald-400 animate-ping' : 'bg-emerald-400 animate-pulse'}`} />
+                <span>
+                  {isZoomed ? "Entering Dev Node... • Zoom Active" : "3D Earth Orbit • Drag to Rotate"}
+                </span>
               </div>
 
               {/* 3D Canvas Scene */}
-              <HeroScene />
+              <HeroScene isZoomed={isZoomed} />
 
               {/* Bottom tech badges */}
               <div className="absolute bottom-4 right-4 z-20 flex gap-2">
                 <span className="px-2 py-0.5 rounded bg-zinc-950/80 border border-zinc-800 text-[10px] font-mono text-zinc-500 backdrop-blur-md">
                   WebGL 2.0
                 </span>
-                <span className="px-2 py-0.5 rounded bg-zinc-950/80 border border-zinc-800 text-[10px] font-mono text-zinc-400 backdrop-blur-md">
-                  60 FPS
+                <span className={`px-2 py-0.5 rounded bg-zinc-950/80 border text-[10px] font-mono transition-all duration-300 backdrop-blur-md ${
+                  isZoomed 
+                    ? 'border-emerald-500/50 text-emerald-400 font-bold shadow-[0_0_10px_rgba(16,185,129,0.3)] animate-pulse' 
+                    : 'border-zinc-800/80 text-emerald-400/80'
+                }`}>
+                  {isZoomed ? "120 FPS (ACTIVE)" : "120 FPS"}
                 </span>
               </div>
             </div>
